@@ -4,6 +4,13 @@ version: 1.0.0
 description: Home rack server
 type: application
 keywords:
-  - rackserver
-  - plex
+  - autobrr
+  - homepage
+  - jackett
   - nginx
+  - plex
+  - qbittorrent
+  - rackserver
+  - radarr
+  - sonarr
+  - thelounge
