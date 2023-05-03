@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img src=".github/img/header.png" alt="Banner" width="100%">
+</p>
+
 <p align="center">
   A personal collection of helm charts for the ultimate home server.
 </p>
