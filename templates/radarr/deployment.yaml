@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  namespace: default
+  labels:
+    app.kubernetes.io/name: radarr
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: radarr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: radarr
+    spec:
+      containers:
+        - name: radarr
+          image: "lscr.io/linuxserver/radarr:{{ .Values.images.radarr }}"
+          imagePullPolicy: Always
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/New_York" 
+          ports:
+            - name: http
+              containerPort: 7878
+              protocol: TCP
+          volumeMounts:
+            - name: radarr-config
+              mountPath: /config
+            - name: downloads
+              mountPath: /downloads
+            - name: movies
+              mountPath: /movies
+            
+      volumes:
+        - name: radarr-config
+          hostPath:
+            path: "{{ .Values.radarr.config }}"
+            type: Directory
+        - name: downloads
+          hostPath:
+            path: "{{ .Values.qbittorrent.downloads }}"
+            type: Directory
+        - name: movies
+          hostPath:
+            path: "{{ .Values.plex.library.movies }}"
+            type: Directory

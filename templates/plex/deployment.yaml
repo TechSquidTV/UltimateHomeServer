@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex
+  namespace: default
+  labels:
+    app.kubernetes.io/name: plex
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: plex
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: plex
+    spec:
+      containers:
+        - name: plex
+          image: "lscr.io/linuxserver/plex:{{ .Values.images.plex }}"
+          imagePullPolicy: Always
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/New_York"
+          ports:
+            - name: http
+              containerPort: 32400
+              protocol: TCP
+          volumeMounts:
+            - name: plex-config
+              mountPath: /config
+            - name: tv
+              mountPath: /tv
+            - name: movies
+              mountPath: /movies
+            - name: music
+              mountPath: /music
+            - name: photos
+              mountPath: /photos
+      volumes:
+        - name: plex-config
+          hostPath:
+            path: "{{ .Values.plex.config }}"
+            type: Directory
+        - name: tv
+          hostPath:
+            path: "{{ .Values.plex.library.tv }}"
+            type: Directory
+        - name: movies
+          hostPath:
+            path: "{{ .Values.plex.library.movies }}"
+            type: Directory
+        - name: music
+          hostPath:
+            path: "{{ .Values.plex.library.music }}"
+            type: Directory
+        - name: photos
+          hostPath:
+            path: "{{ .Values.plex.library.photos }}"
+            type: Directory

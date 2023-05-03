@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/nginx/configmap.yaml") . | sha256sum}}
+        checksum/file: {{ (.Files.Get "files/nginx.conf") | sha256sum }}
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - image: "nginx:{{ .Values.images.nginx }}"
+          imagePullPolicy: IfNotPresent
+          name: nginx
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/New_York"
+            - name: WEBUI_PORT
+              value: "8080"
+          ports:
+            - containerPort: 80
+              protocol: TCP
+              name: http
+            - containerPort: 443
+              protocol: TCP
+              name: https
+            - containerPort: 32400
+              protocol: TCP
+              name: plex
+          volumeMounts:
+            - name: nginx-configs
+              readOnly: true
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+            - name: nginx-configs
+              readOnly: true
+              mountPath: /etc/nginx/ssl.conf
+              subPath: ssl.conf
+            - name: letsencrypt
+              readOnly: true
+              mountPath: /etc/letsencrypt
+            - name: public
+              readOnly: true
+              mountPath: {{.Values.nginx.public_path }}
+          livenessProbe:
+            exec:
+              command:
+                - /usr/sbin/nginx
+                - "-s"
+                - reload
+            failureThreshold: 3
+            initialDelaySeconds: 10
+            periodSeconds: 3600
+            timeoutSeconds: 5
+      volumes:
+        - name: nginx-configs
+          configMap:
+            name: nginx
+        - name: letsencrypt
+          hostPath:
+            path: /etc/letsencrypt
+        - name: public
+          hostPath:
+            path: {{.Values.nginx.public_path }}

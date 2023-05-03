@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: qbittorrent
+  namespace: default
+  labels:
+    app.kubernetes.io/name: qbittorrent
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: 6881
+      targetPort: p2p
+      protocol: TCP
+      name: p2p
+    - port: 6881
+      targetPort: p2p
+      protocol: UDP
+      name: p2p-udp
+  selector:
+    app.kubernetes.io/name: qbittorrent

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage
+  namespace: default
+  labels:
+    app.kubernetes.io/name: homepage
+data:
+  kubernetes.yaml: |
+    mode: cluster
+  settings.yaml: |
+    {{ .Values.homepage.settings | toYaml | nindent 4 }}
+  bookmarks.yaml: |
+    {{ .Values.homepage.bookmarks | toYaml | nindent 4 }}
+  services.yaml: |
+    {{ .Values.homepage.services | toYaml | nindent 4 }}
+  widgets.yaml: |
+    {{ .Values.homepage.widgets | toYaml | nindent 4}}
+

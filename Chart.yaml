@@ -1,0 +1,9 @@
+apiVersion: v2
+name: rackserver
+version: 1.0.0
+description: Home rack server
+type: application
+keywords:
+  - rackserver
+  - plex
+  - nginx

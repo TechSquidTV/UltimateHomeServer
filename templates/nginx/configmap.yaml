@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+data:
+  nginx.conf: |-
+    {{ tpl ( .Files.Get "files/nginx.conf" ) . | nindent 4 }}
+  ssl.conf: |-
+    {{ tpl ( .Files.Get "files/ssl.conf" ) . | nindent 4 }}

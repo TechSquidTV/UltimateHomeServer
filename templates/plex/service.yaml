@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: plex
+  namespace: default
+  labels:
+    app.kubernetes.io/name: plex
+spec:
+  type: ClusterIP
+  ports:
+    - port: 32400
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: plex

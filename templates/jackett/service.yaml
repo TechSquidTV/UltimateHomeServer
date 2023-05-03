@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jackett
+  namespace: default
+  labels:
+    app.kubernetes.io/name: jackett
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9117
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: jackett

@@ -1,0 +1,79 @@
+images:
+  nginx: latest
+  homepage: latest
+  plex: latest
+  qbittorrent: latest
+  sonarr: latest
+  radarr: latest
+  thelounge: latest
+  autobrr: latest
+  jackett: latest
+
+certs:
+  ssl_certificate: /path/to/cert
+  ssl_certificate_key: /path/to/cert
+  ssl_dhparam: /path/to/cert
+
+qbittorrent:
+  config: /path/to/config
+  downloads: /path/to/downloads
+
+plex:
+  library:
+    tv: /path/to/tv
+    movies: /path/to/movies
+    music: /path/to/music
+    photos: /path/to/photos
+  config: /path/to/config
+
+homepage:
+  services: |
+    - My First Group:
+        - My First Service:
+            href: http://localhost/
+            description: Homepage is awesome
+  bookmarks: |
+      - Developer:
+        - Github:
+            - abbr: GH
+              href: https://github.com/
+  widgets: |
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+          label: "cluster"
+        nodes:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+    - resources:
+        backend: resources
+        expanded: true
+        cpu: true
+        memory: true
+    - search:
+        provider: google
+        target: _blank
+
+nginx:
+  public_path: /path/to/public
+
+sonarr:
+  config: /path/to/config
+
+radarr:
+  config: /path/to/config
+
+jackett:
+  config: /path/to/config
+
+thelounge:
+  config: /path/to/config
+
+autobrr:
+  config: /path/to/config
+

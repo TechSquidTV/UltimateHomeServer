@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qbittorrent
+  namespace: default
+  labels:
+    app.kubernetes.io/name: qbittorrent
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: qbittorrent
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: qbittorrent
+    spec:
+      containers:
+        - name: qbittorrent
+          image: "lscr.io/linuxserver/qbittorrent:{{ .Values.images.qbittorrent }}"
+          imagePullPolicy: Always
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/New_York"
+            - name: WEBUI_PORT
+              value: "8080"  
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: p2p
+              containerPort: 6881
+              protocol: TCP
+            - name: p2p-udp
+              containerPort: 6881
+              protocol: UDP
+          volumeMounts:
+            - name: qbittorrent-config
+              mountPath: /config
+            - name: downloads
+              mountPath: /downloads
+      volumes:
+        - name: qbittorrent-config
+          hostPath:
+            path: "{{ .Values.qbittorrent.config }}"
+            type: Directory
+        - name: downloads
+          hostPath:
+            path: "{{ .Values.qbittorrent.downloads }}"
+            type: Directory
