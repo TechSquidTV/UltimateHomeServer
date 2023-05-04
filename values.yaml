@@ -8,6 +8,7 @@ images:
   thelounge: latest
   autobrr: latest
   jackett: latest
+  sabnzbd: latest
 
 certs:
   ssl_certificate: /path/to/cert
@@ -77,3 +78,5 @@ thelounge:
 autobrr:
   config: /path/to/config
 
+sabnzbd:
+  config: /path/to/config
