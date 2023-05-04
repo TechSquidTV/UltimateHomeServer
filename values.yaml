@@ -9,6 +9,7 @@ images:
   autobrr: latest
   jackett: latest
   sabnzbd: latest
+  overseerr: latest
 
 certs:
   ssl_certificate: /path/to/cert
@@ -79,4 +80,7 @@ autobrr:
   config: /path/to/config
 
 sabnzbd:
+  config: /path/to/config
+
+overseerr:
   config: /path/to/config
