@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tautulli
+  namespace: default
+  labels:
+    app.kubernetes.io/name: tautulli
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: tautulli
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: tautulli
+    spec:
+      containers:
+        - name: tautulli
+          image: "lscr.io/linuxserver/tautulli:{{ .Values.images.tautulli }}"
+          imagePullPolicy: Always
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/New_York"
+          ports:
+            - name: http
+              containerPort: 8181
+              protocol: TCP
+          volumeMounts:
+            - name: tautulli-config
+              mountPath: /config
+      volumes:
+        - name: tautulli-config
+          hostPath:
+            path: "{{ .Values.tautulli.config }}"
+            type: Directory
