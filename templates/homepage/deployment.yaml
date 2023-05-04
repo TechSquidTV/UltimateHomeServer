@@ -24,6 +24,15 @@ spec:
       automountServiceAccountToken: true
       dnsPolicy: ClusterFirst
       enableServiceLinks: true
+      initContainers:
+      - name: init-config
+        image: busybox
+        command: ['sh', '-c', 'cp /homepage-config/* /config-working-dir/']
+        volumeMounts:
+        - name: homepage-config
+          mountPath: /homepage-config
+        - name: config-working-dir
+          mountPath: /config-working-dir
       containers:
         - name: homepage
           image: ghcr.io/benphelps/homepage:{{ .Values.images.homepage }}
@@ -36,7 +45,7 @@ spec:
               containerPort: 3000
               protocol: TCP
           volumeMounts:
-            - name: homepage-config
+            - name: config-working-dir
               mountPath: /app/config
             - name: logs
               mountPath: /app/config/logs
@@ -45,4 +54,6 @@ spec:
           configMap:
             name: homepage
         - name: logs
+          emptyDir: {}
+        - name: config-working-dir
           emptyDir: {}
