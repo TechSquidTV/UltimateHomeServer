@@ -9,7 +9,7 @@ data:
   kubernetes.yaml: |
     mode: cluster
   settings.yaml: |
-    {{ .Values.homepage.settings | toYaml | nindent 4 }}
+    {{ .Values.homepage.settings | nindent 4 }}
   bookmarks.yaml: |
     {{ .Values.homepage.bookmarks | toYaml | nindent 4 }}
   services.yaml: |
