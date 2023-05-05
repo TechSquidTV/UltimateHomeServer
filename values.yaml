@@ -11,6 +11,7 @@ images:
   sabnzbd: latest
   overseerr: latest
   tautulli: latest
+  cloudflared: "2023.5.0"
 
 certs:
   ssl_certificate: /path/to/cert
@@ -88,3 +89,9 @@ overseerr:
 
 tautulli:
   config: /path/to/config
+
+cloudflared:
+  tunnel: example-tunnel
+  domain: example.com
+  url: foo.example.com
+  target: localhost:8080
