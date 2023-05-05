@@ -11,14 +11,17 @@
 
 - 🌐 [`nginx`](https://hub.docker.com/_/nginx): A high-performance web server and reverse proxy.
 - 🏠 [`homepage`](https://gethomepage.dev/): A customizable start page for your home server.
-- 📺 [`plex`](https://www.plex.tv/): A media server that allows you to stream your personal media collection.
+- 📺 [`plex`](https://www.plex.tv/): A personal media server.
 - 🎬 [`radarr`](https://radarr.video/): An automated movie download and management system.
-- 📰 [`sabnzbd`](https://sabnzbd.org/) The automated Usenet download tool.
+- 📰 [`sabnzbd`](https://sabnzbd.org/): The automated Usenet download tool.
 - 📺 [`sonarr`](https://sonarr.tv/): An automated TV show download and management system.
-- 🔍 [`jackett`](https://github.com/Jackett/Jackett): An API support system that allows you to connect with various torrent providers.
+- 👁️ [`overseerr`](https://overseerr.dev/): A request management and media discovery tool.
+- 🔍 [`jackett`](https://github.com/Jackett/Jackett): An API to connect with various torrent providers.
 - ⏬ [`qbittorrent`](https://www.qbittorrent.org/): A lightweight and feature-rich torrent client.
 - 💬 [`thelounge`](https://thelounge.chat/): A modern, self-hosted web IRC client.
-- 🤖 [`autobrr`](https://autobrr.com/): Automatically searches for and downloads new content based on user-defined rules.
+- 🤖 [`autobrr`](https://autobrr.com/): Automatically search and download from IRC.
+- 📊 [`tautulli`](https://tautulli.com/): Monitor your Plex Media Server.
+- ☁️ [`cloudflared`](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/) Expose services running on your home network to the internet.
 
 ## Prerequisites
 

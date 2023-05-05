@@ -5,13 +5,16 @@ description: Home rack server
 type: application
 keywords:
   - autobrr
+  - cloudflared
   - homepage
   - jackett
   - nginx
+  - overseerr
   - plex
   - qbittorrent
   - rackserver
   - radarr
   - sabnzbd
   - sonarr
+  - tautulli
   - thelounge
