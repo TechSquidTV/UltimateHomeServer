@@ -1,21 +1,21 @@
 images:
-  nginx: latest
+  autobrr: latest
+  cloudflared: "2023.5.0"
   homepage: latest
+  jackett: latest
+  nginx: latest
+  overseerr: latest
   plex: latest
   qbittorrent: latest
-  sonarr: latest
   radarr: latest
-  thelounge: latest
-  autobrr: latest
-  jackett: latest
   sabnzbd: latest
-  overseerr: latest
+  sonarr: latest
   tautulli: latest
-  cloudflared: "2023.5.0"
+  thelounge: latest
 
 certs:
-  ssl_certificate: /path/to/cert
   ssl_certificate_key: /path/to/cert
+  ssl_certificate: /path/to/cert
   ssl_dhparam: /path/to/cert
 
 qbittorrent:
