@@ -65,6 +65,7 @@ homepage:
 
 nginx:
   public_path: /path/to/public
+  domain: example.com
 
 sonarr:
   config: /path/to/config
