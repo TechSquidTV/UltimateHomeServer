@@ -168,3 +168,11 @@ services:
       tag: latest
       pullPolicy: Always
     data: /path/to/data
+  changedetectionio:
+    enabled: false
+    replicaCount: 1
+    image:
+      repository: lscr.io/linuxserver/changedetection.io
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config

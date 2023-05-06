@@ -1,0 +1,18 @@
+{{- if .Values.services.changedetectionio.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: changedetectionio
+  namespace: default
+  labels:
+    app.kubernetes.io/name: changedetectionio
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: changedetectionio
+{{- end }}

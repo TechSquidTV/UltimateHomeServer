@@ -1,0 +1,46 @@
+{{- if .Values.services.changedetectionio.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: changedetectionio
+  namespace: default
+  labels:
+    app.kubernetes.io/name: changedetectionio
+spec:
+  revisionHistoryLimit: 3
+  replicas: {{ .Values.services.changedetectionio.replicaCount }}
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: changedetectionio
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: changedetectionio
+    spec:
+      containers:
+        - name: changedetectionio
+          image: "{{ .Values.services.changedetectionio.image.repository }}:{{ .Values.services.changedetectionio.image.tag }}"
+          imagePullPolicy: {{ .Values.services.changedetectionio.image.pullPolicy }}
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "{{ .Values.common.tz }}"
+          ports:
+            - name: http
+              containerPort: 5000
+              protocol: TCP
+          volumeMounts:
+            - name: changedetectionio-config
+              mountPath: /config
+
+      volumes:
+        - name: changedetectionio-config
+          hostPath:
+            path: "{{ .Values.services.changedetectionio.config }}"
+            type: Directory
+{{- end }}
