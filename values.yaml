@@ -160,3 +160,11 @@ services:
     data: /path/to/data
     invitation_code: changeme
     app_secret_token: changeme
+  gotify:
+    enabled: false
+    replicaCount: 1
+    image:
+      repository: ghcr.io/gotify/server
+      tag: latest
+      pullPolicy: Always
+    data: /path/to/data

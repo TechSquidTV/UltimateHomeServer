@@ -6,6 +6,7 @@ type: application
 keywords:
   - autobrr
   - cloudflared
+  - gotify
   - homepage
   - huginn
   - jackett

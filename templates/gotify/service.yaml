@@ -1,0 +1,18 @@
+{{- if .Values.services.gotify.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: gotify
+  namespace: default
+  labels:
+    app.kubernetes.io/name: gotify
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: gotify
+{{- end }}

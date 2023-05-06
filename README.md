@@ -23,6 +23,7 @@
 - 🤖 [`autobrr`](https://autobrr.com/): Automatically search and download from IRC.
 - 📊 [`tautulli`](https://tautulli.com/): Monitor your Plex Media Server.
 - ☁️ [`cloudflared`](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/) Expose services running on your home network to the internet.
+- 📲 [`gotify`](https://gotify.net/docs/plugin) Self-hosted push notifications.
 
 ## Prerequisites
 
