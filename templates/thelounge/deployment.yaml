@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: thelounge
 spec:
   revisionHistoryLimit: 3
-  replicas: 1
+  replicas: {{ .Values.services.thelounge.replicaCount }}
   strategy:
     type: RollingUpdate
   selector:

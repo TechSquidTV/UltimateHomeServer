@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: homepage
 spec:
   revisionHistoryLimit: 3
-  replicas: 1
+  replicas: {{ .Values.services.homepage.replicaCount }}
   strategy:
     type: RollingUpdate
   selector:

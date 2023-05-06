@@ -8,6 +8,7 @@ common:
 services:
   qbittorrent:
     enabled: false
+    replicaCount: 1
     image:
       repository: lscr.io/linuxserver/qbittorrent
       tag: latest
@@ -16,6 +17,7 @@ services:
     downloads: /path/to/downloads
   plex:
     enabled: false
+    replicaCount: 1
     image:
       repository: lscr.io/linuxserver/plex
       tag: latest
@@ -28,6 +30,7 @@ services:
     config: /path/to/config
   homepage:
     enabled: false
+    replicaCount: 1
     image:
       repository: ghcr.io/benphelps/homepage
       tag: latest
@@ -65,6 +68,7 @@ services:
           target: _blank
   nginx:
     enabled: false
+    replicaCount: 1
     image:
       repository: nginx
       tag: latest
@@ -73,6 +77,7 @@ services:
     domain: example.com
   sonarr:
     enabled: false
+    replicaCount: 1
     image:
       repository: lscr.io/linuxserver/sonarr
       tag: latest
@@ -80,6 +85,7 @@ services:
     config: /path/to/config
   radarr:
     enabled: false
+    replicaCount: 1
     image:
       repository: lscr.io/linuxserver/radarr
       tag: latest
@@ -87,6 +93,7 @@ services:
     config: /path/to/config
   jackett:
     enabled: false
+    replicaCount: 1
     image:
       repository: lscr.io/linuxserver/jackett
       tag: latest
@@ -94,6 +101,7 @@ services:
     config: /path/to/config
   thelounge:
     enabled: false
+    replicaCount: 1
     image:
       repository: lscr.io/linuxserver/thelounge
       tag: latest
@@ -101,6 +109,7 @@ services:
     config: /path/to/config
   autobrr:
     enabled: false
+    replicaCount: 1
     image:
       repository: ghcr.io/autobrr/autobrr
       tag: latest
@@ -108,6 +117,7 @@ services:
     config: /path/to/config
   sabnzbd:
     enabled: false
+    replicaCount: 1
     image:
       repository: lscr.io/linuxserver/sabnzbd
       tag: latest
@@ -115,6 +125,7 @@ services:
     config: /path/to/config
   overseerr:
     enabled: false
+    replicaCount: 1
     image:
       repository: lscr.io/linuxserver/overseerr
       tag: latest
@@ -122,6 +133,7 @@ services:
     config: /path/to/config
   tautulli:
     enabled: false
+    replicaCount: 1
     image:
       repository: lscr.io/linuxserver/tautulli
       tag: latest
@@ -129,6 +141,7 @@ services:
     config: /path/to/config
   cloudflared:
     enabled: false
+    replicaCount: 1
     image:
       repository: cloudflare/cloudflared
       tag: "2023.5.0"
@@ -139,6 +152,7 @@ services:
     target: localhost:8080
   huginn:
     enabled: false
+    replicaCount: 1
     image:
       repository: ghcr.io/huginn/huginn
       tag: latest

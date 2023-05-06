@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: qbittorrent
 spec:
   revisionHistoryLimit: 3
-  replicas: 1
+  replicas: {{ .Values.services.qbittorrent.replicaCount }}
   strategy:
     type: RollingUpdate
   selector:

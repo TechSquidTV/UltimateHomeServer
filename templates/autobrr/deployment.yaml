@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/name: autobrr
 spec:
   revisionHistoryLimit: 3
-  replicas: 1
+  replicas: {{ .Values.services.autobrr.replicaCount }}
   strategy:
     type: RollingUpdate
   selector:

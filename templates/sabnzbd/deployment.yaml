@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: sabnzbd
 spec:
   revisionHistoryLimit: 3
-  replicas: 1
+  replicas: {{ .Values.services.sabnzbd.replicaCount }}
   strategy:
     type: RollingUpdate
   selector:

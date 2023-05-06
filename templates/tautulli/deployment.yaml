@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: tautulli
 spec:
   revisionHistoryLimit: 3
-  replicas: 1
+  replicas: {{ .Values.services.tautulli.replicaCount }}
   strategy:
     type: RollingUpdate
   selector:

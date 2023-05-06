@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: huginn
 spec:
   revisionHistoryLimit: 3
-  replicas: 1
+  replicas: {{ .Values.services.huginn.replicaCount }}
   strategy:
     type: RollingUpdate
   selector:

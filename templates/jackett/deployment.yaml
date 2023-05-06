@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: jackett
 spec:
   revisionHistoryLimit: 3
-  replicas: 1
+  replicas: {{ .Values.services.jackett.replicaCount }}
   strategy:
     type: RollingUpdate
   selector:
