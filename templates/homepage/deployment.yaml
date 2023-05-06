@@ -18,28 +18,28 @@ spec:
       labels:
         app.kubernetes.io/name: homepage
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/homepage/configmap.yaml") . | sha256sum}}
+        checksum/config: {{ include (print $.Template.BasePath "/homepage/configmap.yaml") . | sha256sum }}
     spec:
       serviceAccountName: homepage
       automountServiceAccountToken: true
       dnsPolicy: ClusterFirst
       enableServiceLinks: true
       initContainers:
-      - name: init-config
-        image: busybox
-        command: ['sh', '-c', 'cp /homepage-config/* /config-working-dir/']
-        volumeMounts:
-        - name: homepage-config
-          mountPath: /homepage-config
-        - name: config-working-dir
-          mountPath: /config-working-dir
+        - name: init-config
+          image: busybox
+          command: ["sh", "-c", "cp /homepage-config/* /config-working-dir/"]
+          volumeMounts:
+            - name: homepage-config
+              mountPath: /homepage-config
+            - name: config-working-dir
+              mountPath: /config-working-dir
       containers:
-        - name: homepage
-          image: ghcr.io/benphelps/homepage:{{ .Values.images.homepage }}
-          imagePullPolicy: Always
+        - image: "{{ .Values.services.homepage.image.repository }}:{{ .Values.services.homepage.image.tag }}"
+          imagePullPolicy: {{ .Values.services.homepage.image.pullPolicy }}
+          name: homepage
           env:
             - name: TZ
-              value: "America/New_York"
+              value: "{{ .Values.common.tz }}"
           ports:
             - name: http
               containerPort: 3000

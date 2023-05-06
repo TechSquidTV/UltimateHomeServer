@@ -20,15 +20,15 @@ spec:
     spec:
       containers:
         - name: plex
-          image: "lscr.io/linuxserver/plex:{{ .Values.images.plex }}"
-          imagePullPolicy: Always
+          image: "{{ .Values.services.plex.image.repository }}:{{ .Values.services.plex.image.tag }}"
+          imagePullPolicy: {{ .Values.services.plex.image.pullPolicy }}
           env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/New_York"
+              value: "{{ .Values.common.tz }}"
           ports:
             - name: http
               containerPort: 32400
@@ -47,21 +47,21 @@ spec:
       volumes:
         - name: plex-config
           hostPath:
-            path: "{{ .Values.plex.config }}"
+            path: "{{ .Values.services.plex.config }}"
             type: Directory
         - name: tv
           hostPath:
-            path: "{{ .Values.plex.library.tv }}"
+            path: "{{ .Values.services.plex.library.tv }}"
             type: Directory
         - name: movies
           hostPath:
-            path: "{{ .Values.plex.library.movies }}"
+            path: "{{ .Values.services.plex.library.movies }}"
             type: Directory
         - name: music
           hostPath:
-            path: "{{ .Values.plex.library.music }}"
+            path: "{{ .Values.services.plex.library.music }}"
             type: Directory
         - name: photos
           hostPath:
-            path: "{{ .Values.plex.library.photos }}"
+            path: "{{ .Values.services.plex.library.photos }}"
             type: Directory

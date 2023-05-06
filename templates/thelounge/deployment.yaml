@@ -20,15 +20,15 @@ spec:
     spec:
       containers:
         - name: thelounge
-          image: "lscr.io/linuxserver/thelounge:{{ .Values.images.thelounge }}"
-          imagePullPolicy: Always
+          image: "{{ .Values.services.thelounge.image.repository }}:{{ .Values.services.thelounge.image.tag }}"
+          imagePullPolicy: {{ .Values.services.thelounge.image.pullPolicy }}
           env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/New_York" 
+              value: "{{ .Values.common.tz }}"
           ports:
             - name: http
               containerPort: 9000
@@ -36,9 +36,9 @@ spec:
           volumeMounts:
             - name: thelounge-config
               mountPath: /var/opt/thelounge
-            
+
       volumes:
         - name: thelounge-config
           hostPath:
-            path: "{{ .Values.thelounge.config }}"
+            path: "{{ .Values.services.thelounge.config }}"
             type: Directory

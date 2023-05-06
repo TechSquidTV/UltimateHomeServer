@@ -20,15 +20,15 @@ spec:
     spec:
       containers:
         - name: autobrr
-          image: "ghcr.io/autobrr/autobrr:{{ .Values.images.autobrr }}"
-          imagePullPolicy: Always
+          image: "{{ .Values.services.autobrr.image.repository }}:{{ .Values.services.autobrr.image.tag }}"
+          imagePullPolicy: {{ .Values.services.autobrr.image.pullPolicy }}
           env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/New_York" 
+              value: "{{ .Values.common.tz }}"
           ports:
             - name: http
               containerPort: 7474
@@ -36,9 +36,9 @@ spec:
           volumeMounts:
             - name: autobrr-config
               mountPath: /config
-            
+
       volumes:
         - name: autobrr-config
           hostPath:
-            path: "{{ .Values.autobrr.config }}"
+            path: "{{ .Values.services.autobrr.config }}"
             type: Directory

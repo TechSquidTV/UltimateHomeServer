@@ -20,15 +20,15 @@ spec:
     spec:
       containers:
         - name: tautulli
-          image: "lscr.io/linuxserver/tautulli:{{ .Values.images.tautulli }}"
-          imagePullPolicy: Always
+          image: "{{ .Values.services.tautulli.image.repository }}:{{ .Values.services.tautulli.image.tag }}"
+          imagePullPolicy: {{ .Values.services.tautulli.image.pullPolicy }}
           env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/New_York"
+              value: "{{ .Values.common.tz }}"
           ports:
             - name: http
               containerPort: 8181
@@ -39,5 +39,5 @@ spec:
       volumes:
         - name: tautulli-config
           hostPath:
-            path: "{{ .Values.tautulli.config }}"
+            path: "{{ .Values.services.tautulli.config }}"
             type: Directory

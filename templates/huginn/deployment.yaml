@@ -20,15 +20,15 @@ spec:
     spec:
       containers:
         - name: huginn
-          image: "ghcr.io/huginn/huginn:{{ .Values.images.huginn }}"
-          imagePullPolicy: Always
+          image: "{{ .Values.services.huginn.image.repository }}:{{ .Values.services.huginn.image.tag }}"
+          imagePullPolicy: {{ .Values.services.huginn.image.pullPolicy }}
           env:
             - name: TZ
-              value: "America/New_York"
+              value: "{{ .Values.common.tz }}"
             - name: INVITATION_CODE
-              value: "{{ .Values.huginn.invitation_code }}"
+              value: "{{ .Values.services.huginn.invitation_code }}"
             - name: APP_SECRET_TOKEN
-              value: "{{ .Values.huginn.app_secret_token }}"
+              value: "{{ .Values.services.huginn.app_secret_token }}"
           ports:
             - name: http
               containerPort: 3000
@@ -39,5 +39,5 @@ spec:
       volumes:
         - name: huginn-data
           hostPath:
-            path: "{{ .Values.huginn.data }}"
+            path: "{{ .Values.services.huginn.data }}"
             type: Directory

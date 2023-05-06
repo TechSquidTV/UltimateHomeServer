@@ -20,17 +20,17 @@ spec:
     spec:
       containers:
         - name: qbittorrent
-          image: "lscr.io/linuxserver/qbittorrent:{{ .Values.images.qbittorrent }}"
-          imagePullPolicy: Always
+          image: "{{ .Values.services.qbittorrent.image.repository }}:{{ .Values.services.qbittorrent.image.tag }}"
+          imagePullPolicy: {{ .Values.services.qbittorrent.image.pullPolicy }}
           env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/New_York"
+              value: "{{ .Values.common.tz }}"
             - name: WEBUI_PORT
-              value: "8080"  
+              value: "8080"
           ports:
             - name: http
               containerPort: 8080
@@ -49,9 +49,9 @@ spec:
       volumes:
         - name: qbittorrent-config
           hostPath:
-            path: "{{ .Values.qbittorrent.config }}"
+            path: "{{ .Values.services.qbittorrent.config }}"
             type: Directory
         - name: downloads
           hostPath:
-            path: "{{ .Values.qbittorrent.downloads }}"
+            path: "{{ .Values.services.qbittorrent.downloads }}"
             type: Directory

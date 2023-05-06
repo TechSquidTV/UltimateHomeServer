@@ -20,15 +20,15 @@ spec:
     spec:
       containers:
         - name: overseerr
-          image: "lscr.io/linuxserver/overseerr:{{ .Values.images.overseerr }}"
-          imagePullPolicy: Always
+          image: "{{ .Values.services.overseerr.image.repository }}:{{ .Values.services.overseerr.image.tag }}"
+          imagePullPolicy: {{ .Values.services.overseerr.image.pullPolicy }}
           env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/New_York"
+              value: "{{ .Values.common.tz }}"
           ports:
             - name: http
               containerPort: 5055
@@ -39,5 +39,5 @@ spec:
       volumes:
         - name: overseerr-config
           hostPath:
-            path: "{{ .Values.overseerr.config }}"
+            path: "{{ .Values.services.overseerr.config }}"
             type: Directory

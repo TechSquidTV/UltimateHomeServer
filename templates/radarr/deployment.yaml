@@ -20,15 +20,15 @@ spec:
     spec:
       containers:
         - name: radarr
-          image: "lscr.io/linuxserver/radarr:{{ .Values.images.radarr }}"
-          imagePullPolicy: Always
+          image: "{{ .Values.services.radarr.image.repository }}:{{ .Values.services.radarr.image.tag }}"
+          imagePullPolicy: {{ .Values.services.radarr.image.pullPolicy }}
           env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/New_York" 
+              value: "{{ .Values.common.tz }}"
           ports:
             - name: http
               containerPort: 7878
@@ -40,17 +40,17 @@ spec:
               mountPath: /downloads
             - name: movies
               mountPath: /movies
-            
+
       volumes:
         - name: radarr-config
           hostPath:
-            path: "{{ .Values.radarr.config }}"
+            path: "{{ .Values.services.radarr.config }}"
             type: Directory
         - name: downloads
           hostPath:
-            path: "{{ .Values.qbittorrent.downloads }}"
+            path: "{{ .Values.services.qbittorrent.downloads }}"
             type: Directory
         - name: movies
           hostPath:
-            path: "{{ .Values.plex.library.movies }}"
+            path: "{{ .Values.services.plex.library.movies }}"
             type: Directory

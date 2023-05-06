@@ -20,15 +20,15 @@ spec:
     spec:
       containers:
         - name: sonarr
-          image: "lscr.io/linuxserver/sonarr:{{ .Values.images.sonarr }}"
-          imagePullPolicy: Always
+          image: "{{ .Values.services.sonarr.image.repository }}:{{ .Values.services.sonarr.image.tag }}"
+          imagePullPolicy: {{ .Values.services.sonarr.image.pullPolicy }}
           env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/New_York" 
+              value: "{{ .Values.common.tz }}"
           ports:
             - name: http
               containerPort: 8989
@@ -40,17 +40,17 @@ spec:
               mountPath: /downloads
             - name: tv
               mountPath: /tv
-            
+
       volumes:
         - name: sonarr-config
           hostPath:
-            path: "{{ .Values.sonarr.config }}"
+            path: "{{ .Values.services.sonarr.config }}"
             type: Directory
         - name: downloads
           hostPath:
-            path: "{{ .Values.qbittorrent.downloads }}"
+            path: "{{ .Values.services.qbittorrent.downloads }}"
             type: Directory
         - name: tv
           hostPath:
-            path: "{{ .Values.plex.library.tv }}"
-            type: Directory            
+            path: "{{ .Values.services.plex.library.tv }}"
+            type: Directory

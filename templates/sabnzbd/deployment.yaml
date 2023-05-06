@@ -20,15 +20,15 @@ spec:
     spec:
       containers:
         - name: sabnzbd
-          image: "lscr.io/linuxserver/sabnzbd:{{ .Values.images.sabnzbd }}"
-          imagePullPolicy: Always
+          image: "{{ .Values.services.sabnzbd.image.repository }}:{{ .Values.services.sabnzbd.image.tag }}"
+          imagePullPolicy: {{ .Values.services.sabnzbd.image.pullPolicy }}
           env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/New_York" 
+              value: "{{ .Values.common.tz }}"
           ports:
             - name: http
               containerPort: 8080
@@ -41,9 +41,9 @@ spec:
       volumes:
         - name: sabnzbd-config
           hostPath:
-            path: "{{ .Values.sabnzbd.config }}"
+            path: "{{ .Values.services.sabnzbd.config }}"
             type: Directory
         - name: downloads
           hostPath:
-            path: "{{ .Values.qbittorrent.downloads }}"
+            path: "{{ .Values.services.qbittorrent.downloads }}"
             type: Directory

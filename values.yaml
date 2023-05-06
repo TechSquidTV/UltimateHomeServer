@@ -1,104 +1,134 @@
-images:
-  autobrr: latest
-  cloudflared: "2023.5.0"
-  homepage: latest
-  jackett: latest
-  nginx: latest
-  overseerr: latest
-  plex: latest
-  qbittorrent: latest
-  radarr: latest
-  sabnzbd: latest
-  sonarr: latest
-  tautulli: latest
-  thelounge: latest
-  huginn: latest
+common:
+  tz: America/New_York
+  certs:
+    ssl_certificate_key: /path/to/cert
+    ssl_certificate: /path/to/cert
+    ssl_dhparam: /path/to/cert
 
-certs:
-  ssl_certificate_key: /path/to/cert
-  ssl_certificate: /path/to/cert
-  ssl_dhparam: /path/to/cert
-
-qbittorrent:
-  config: /path/to/config
-  downloads: /path/to/downloads
-
-plex:
-  library:
-    tv: /path/to/tv
-    movies: /path/to/movies
-    music: /path/to/music
-    photos: /path/to/photos
-  config: /path/to/config
-
-homepage:
-  services: |
-    - My First Group:
-        - My First Service:
-            href: http://localhost/
-            description: Homepage is awesome
-  bookmarks: |
-      - Developer:
-        - Github:
-            - abbr: GH
-              href: https://github.com/
-  widgets: |
-    - kubernetes:
-        cluster:
-          show: true
+services:
+  qbittorrent:
+    image:
+      repository: lscr.io/linuxserver/qbittorrent
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+    downloads: /path/to/downloads
+  plex:
+    image:
+      repository: lscr.io/linuxserver/plex
+      tag: latest
+      pullPolicy: Always
+    library:
+      tv: /path/to/tv
+      movies: /path/to/movies
+      music: /path/to/music
+      photos: /path/to/photos
+    config: /path/to/config
+  homepage:
+    image:
+      repository: ghcr.io/benphelps/homepage
+      tag: latest
+      pullPolicy: Always
+    services: |
+      - My First Group:
+          - My First Service:
+              href: http://localhost/
+              description: Homepage is awesome
+    bookmarks: |
+        - Developer:
+          - Github:
+              - abbr: GH
+                href: https://github.com/
+    widgets: |
+      - kubernetes:
+          cluster:
+            show: true
+            cpu: true
+            memory: true
+            showLabel: true
+            label: "cluster"
+          nodes:
+            show: true
+            cpu: true
+            memory: true
+            showLabel: true
+      - resources:
+          backend: resources
+          expanded: true
           cpu: true
           memory: true
-          showLabel: true
-          label: "cluster"
-        nodes:
-          show: true
-          cpu: true
-          memory: true
-          showLabel: true
-    - resources:
-        backend: resources
-        expanded: true
-        cpu: true
-        memory: true
-    - search:
-        provider: google
-        target: _blank
-
-nginx:
-  public_path: /path/to/public
-  domain: example.com
-
-sonarr:
-  config: /path/to/config
-
-radarr:
-  config: /path/to/config
-
-jackett:
-  config: /path/to/config
-
-thelounge:
-  config: /path/to/config
-
-autobrr:
-  config: /path/to/config
-
-sabnzbd:
-  config: /path/to/config
-
-overseerr:
-  config: /path/to/config
-
-tautulli:
-  config: /path/to/config
-
-cloudflared:
-  tunnel: example-tunnel
-  domain: example.com
-  url: foo.example.com
-  target: localhost:8080
-
-huginn:
-  data: /path/to/data
-  invitation_code: changeme
-  app_secret_token: changeme
+      - search:
+          provider: google
+          target: _blank
+  nginx:
+    image:
+      repository: nginx
+      tag: latest
+      pullPolicy: IfNotPresent
+    public_path: /path/to/public
+    domain: example.com
+  sonarr:
+    image:
+      repository: lscr.io/linuxserver/sonarr
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+  radarr:
+    image:
+      repository: lscr.io/linuxserver/radarr
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+  jackett:
+    image:
+      repository: lscr.io/linuxserver/jackett
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+  thelounge:
+    image:
+      repository: lscr.io/linuxserver/thelounge
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+  autobrr:
+    image:
+      repository: ghcr.io/autobrr/autobrr
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+  sabnzbd:
+    image:
+      repository: lscr.io/linuxserver/sabnzbd
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+  overseerr:
+    image:
+      repository: lscr.io/linuxserver/overseerr
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+  tautulli:
+    image:
+      repository: lscr.io/linuxserver/tautulli
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+  cloudflared:
+    image:
+      repository: cloudflare/cloudflared
+      tag: "2023.5.0"
+      pullPolicy: Always
+    tunnel: example-tunnel
+    domain: example.com
+    url: foo.example.com
+    target: localhost:8080
+  huginn:
+    image:
+      repository: ghcr.io/huginn/huginn
+      tag: latest
+      pullPolicy: Always
+    data: /path/to/data
+    invitation_code: changeme
+    app_secret_token: changeme

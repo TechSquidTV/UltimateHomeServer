@@ -17,14 +17,14 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/nginx/configmap.yaml") . | sha256sum}}
+        checksum/config: {{ include (print $.Template.BasePath "/nginx/configmap.yaml") . | sha256sum }}
         checksum/file: {{ (.Files.Get "files/nginx.conf") | sha256sum }}
       labels:
         app: nginx
     spec:
       containers:
-        - image: "nginx:{{ .Values.images.nginx }}"
-          imagePullPolicy: IfNotPresent
+        - image: "{{ .Values.services.nginx.image.repository }}:{{ .Values.services.nginx.image.tag }}"
+          imagePullPolicy: {{ .Values.services.nginx.image.pullPolicy }}
           name: nginx
           env:
             - name: PUID
@@ -32,7 +32,7 @@ spec:
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/New_York"
+              value: "{{ .Values.common.tz }}"
             - name: WEBUI_PORT
               value: "8080"
           ports:
@@ -59,7 +59,7 @@ spec:
               mountPath: /etc/letsencrypt
             - name: public
               readOnly: true
-              mountPath: {{.Values.nginx.public_path }}
+              mountPath: {{ .Values.services.nginx.public_path }}
           livenessProbe:
             exec:
               command:
@@ -79,4 +79,4 @@ spec:
             path: /etc/letsencrypt
         - name: public
           hostPath:
-            path: {{.Values.nginx.public_path }}
+            path: {{ .Values.services.nginx.public_path }}

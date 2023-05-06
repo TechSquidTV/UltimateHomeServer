@@ -18,7 +18,8 @@ spec:
     spec:
       containers:
       - name: cloudflared
-        image: cloudflare/cloudflared:{{ .Values.images.cloudflared }}
+        image: "{{ .Values.services.cloudflared.image.repository }}:{{ .Values.services.cloudflared.image.tag }}"
+        imagePullPolicy: {{ .Values.services.cloudflared.image.pullPolicy }}
         args:
         - tunnel
         # Points cloudflared to the config file, which configures what
