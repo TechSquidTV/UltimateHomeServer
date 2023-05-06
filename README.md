@@ -18,6 +18,7 @@
 - 👁️ [`overseerr`](https://overseerr.dev/): A request management and media discovery tool.
 - 🔍 [`jackett`](https://github.com/Jackett/Jackett): An API to connect with various torrent providers.
 - ⏬ [`qbittorrent`](https://www.qbittorrent.org/): A lightweight and feature-rich torrent client.
+- 🦅 [`huginn`](https://github.com/huginn/huginn): Create agents that monitor and act on your behalf.
 - 💬 [`thelounge`](https://thelounge.chat/): A modern, self-hosted web IRC client.
 - 🤖 [`autobrr`](https://autobrr.com/): Automatically search and download from IRC.
 - 📊 [`tautulli`](https://tautulli.com/): Monitor your Plex Media Server.

@@ -12,6 +12,7 @@ images:
   sonarr: latest
   tautulli: latest
   thelounge: latest
+  huginn: latest
 
 certs:
   ssl_certificate_key: /path/to/cert
@@ -96,3 +97,8 @@ cloudflared:
   domain: example.com
   url: foo.example.com
   target: localhost:8080
+
+huginn:
+  data: /path/to/data
+  invitation_code: changeme
+  app_secret_token: changeme

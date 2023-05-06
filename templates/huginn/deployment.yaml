@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: huginn
+  namespace: default
+  labels:
+    app.kubernetes.io/name: huginn
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: huginn
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: huginn
+    spec:
+      containers:
+        - name: huginn
+          image: "ghcr.io/huginn/huginn:{{ .Values.images.huginn }}"
+          imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: "America/New_York"
+            - name: INVITATION_CODE
+              value: "{{ .Values.huginn.invitation_code }}"
+            - name: APP_SECRET_TOKEN
+              value: "{{ .Values.huginn.app_secret_token }}"
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          volumeMounts:
+            - name: huginn-data
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: huginn-data
+          hostPath:
+            path: "{{ .Values.huginn.data }}"
+            type: Directory
