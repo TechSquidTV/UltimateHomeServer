@@ -1,3 +1,4 @@
+{{- if .Values.services.homepage.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -57,3 +58,4 @@ spec:
           emptyDir: {}
         - name: config-working-dir
           emptyDir: {}
+{{- end}}

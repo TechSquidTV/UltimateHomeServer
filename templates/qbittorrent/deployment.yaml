@@ -1,3 +1,4 @@
+{{- if .Values.services.qbittorrent.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -55,3 +56,4 @@ spec:
           hostPath:
             path: "{{ .Values.services.qbittorrent.downloads }}"
             type: Directory
+{{- end }}

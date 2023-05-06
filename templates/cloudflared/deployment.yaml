@@ -1,4 +1,4 @@
----
+{{- if .Values.services.cloudflared.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -64,3 +64,4 @@ spec:
           items:
           - key: config.yaml
             path: config.yaml
+{{- end }}

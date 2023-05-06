@@ -1,3 +1,4 @@
+{{- if .Values.services.plex.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -65,3 +66,4 @@ spec:
           hostPath:
             path: "{{ .Values.services.plex.library.photos }}"
             type: Directory
+{{- end }}

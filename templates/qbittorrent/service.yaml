@@ -1,3 +1,4 @@
+{{- if .Values.services.qbittorrent.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -22,3 +23,4 @@ spec:
       name: p2p-udp
   selector:
     app.kubernetes.io/name: qbittorrent
+{{- end }}

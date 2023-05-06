@@ -1,3 +1,4 @@
+{{- if .Values.services.homepage.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -16,4 +17,4 @@ data:
     {{ .Values.services.homepage.services | toYaml | nindent 4 }}
   widgets.yaml: |
     {{ .Values.services.homepage.widgets | toYaml | nindent 4}}
-
+{{- end }}

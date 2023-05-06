@@ -1,3 +1,4 @@
+{{- if .Values.services.nginx.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -9,3 +10,4 @@ data:
     {{ tpl ( .Files.Get "files/nginx.conf" ) . | nindent 4 }}
   ssl.conf: |-
     {{ tpl ( .Files.Get "files/ssl.conf" ) . | nindent 4 }}
+{{- end }}

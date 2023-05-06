@@ -1,3 +1,4 @@
+{{- if .Values.services.radarr.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -54,3 +55,4 @@ spec:
           hostPath:
             path: "{{ .Values.services.plex.library.movies }}"
             type: Directory
+{{- end }}

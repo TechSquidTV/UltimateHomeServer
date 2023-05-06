@@ -7,6 +7,7 @@ common:
 
 services:
   qbittorrent:
+    enabled: false
     image:
       repository: lscr.io/linuxserver/qbittorrent
       tag: latest
@@ -14,6 +15,7 @@ services:
     config: /path/to/config
     downloads: /path/to/downloads
   plex:
+    enabled: false
     image:
       repository: lscr.io/linuxserver/plex
       tag: latest
@@ -25,6 +27,7 @@ services:
       photos: /path/to/photos
     config: /path/to/config
   homepage:
+    enabled: false
     image:
       repository: ghcr.io/benphelps/homepage
       tag: latest
@@ -61,6 +64,7 @@ services:
           provider: google
           target: _blank
   nginx:
+    enabled: false
     image:
       repository: nginx
       tag: latest
@@ -68,54 +72,63 @@ services:
     public_path: /path/to/public
     domain: example.com
   sonarr:
+    enabled: false
     image:
       repository: lscr.io/linuxserver/sonarr
       tag: latest
       pullPolicy: Always
     config: /path/to/config
   radarr:
+    enabled: false
     image:
       repository: lscr.io/linuxserver/radarr
       tag: latest
       pullPolicy: Always
     config: /path/to/config
   jackett:
+    enabled: false
     image:
       repository: lscr.io/linuxserver/jackett
       tag: latest
       pullPolicy: Always
     config: /path/to/config
   thelounge:
+    enabled: false
     image:
       repository: lscr.io/linuxserver/thelounge
       tag: latest
       pullPolicy: Always
     config: /path/to/config
   autobrr:
+    enabled: false
     image:
       repository: ghcr.io/autobrr/autobrr
       tag: latest
       pullPolicy: Always
     config: /path/to/config
   sabnzbd:
+    enabled: false
     image:
       repository: lscr.io/linuxserver/sabnzbd
       tag: latest
       pullPolicy: Always
     config: /path/to/config
   overseerr:
+    enabled: false
     image:
       repository: lscr.io/linuxserver/overseerr
       tag: latest
       pullPolicy: Always
     config: /path/to/config
   tautulli:
+    enabled: false
     image:
       repository: lscr.io/linuxserver/tautulli
       tag: latest
       pullPolicy: Always
     config: /path/to/config
   cloudflared:
+    enabled: false
     image:
       repository: cloudflare/cloudflared
       tag: "2023.5.0"
@@ -125,6 +138,7 @@ services:
     url: foo.example.com
     target: localhost:8080
   huginn:
+    enabled: false
     image:
       repository: ghcr.io/huginn/huginn
       tag: latest
