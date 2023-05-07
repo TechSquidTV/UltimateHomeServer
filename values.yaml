@@ -1,5 +1,5 @@
 common:
-  tz: "America/New_York"
+  tz: America/New_York
   certs:
     ssl_certificate_key: /path/to/cert
     ssl_certificate: /path/to/cert
@@ -184,11 +184,3 @@ services:
       tag: latest
       pullPolicy: Always
     config: /path/to/config
-  selenium:
-    enabled: false
-    replicaCount: 1
-    shmSize: 2Gi
-    image:
-      repository: selenium/standalone-chrome
-      tag: latest
-      pullPolicy: Always

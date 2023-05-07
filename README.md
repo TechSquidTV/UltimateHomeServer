@@ -25,8 +25,7 @@
 - ☁️ [`cloudflared`](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/): Expose services running on your home network to the internet.
 - 📲 [`gotify`](https://gotify.net/docs/plugin): Self-hosted push notifications.
 - 📲 [`apprise-api](https://github.com/caronc/apprise-api): Multi-platform push notifications.
-- 🔄 [`changedetection.io`](https://changedetection.io): Monitor web pages for changes.
-- 🌐 [`selenium/standalone-chrome`](https://hub.docker.com/r/selenium/standalone-chrome): Pre-configured with Chrome & Selenium for browser testing. 
+- 🔄 [`changedetection.io`](https://changedetection.io): Monitor web pages for changes. 
 
 ## Prerequisites
 
