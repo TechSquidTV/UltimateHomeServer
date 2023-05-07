@@ -1,0 +1,18 @@
+{{- if .Values.services.apprise.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: apprise
+  namespace: default
+  labels:
+    app.kubernetes.io/name: apprise
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: apprise
+{{- end }}

@@ -176,3 +176,11 @@ services:
       tag: latest
       pullPolicy: Always
     config: /path/to/config
+  apprise:
+    enabled: false
+    replicaCount: 1
+    image:
+      repository: lscr.io/linuxserver/apprise-api
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config

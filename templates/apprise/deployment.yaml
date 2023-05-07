@@ -1,0 +1,46 @@
+{{- if .Values.services.apprise.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apprise
+  namespace: default
+  labels:
+    app.kubernetes.io/name: apprise
+spec:
+  revisionHistoryLimit: 3
+  replicas: {{ .Values.services.apprise.replicaCount }}
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: apprise
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: apprise
+    spec:
+      containers:
+        - name: apprise
+          image: "{{ .Values.services.apprise.image.repository }}:{{ .Values.services.apprise.image.tag }}"
+          imagePullPolicy: {{ .Values.services.apprise.image.pullPolicy }}
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "{{ .Values.common.tz }}"
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          volumeMounts:
+            - name: apprise-config
+              mountPath: /config
+
+      volumes:
+        - name: apprise-config
+          hostPath:
+            path: "{{ .Values.services.apprise.config }}"
+            type: Directory
+{{- end }}
