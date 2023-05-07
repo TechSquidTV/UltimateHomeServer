@@ -22,7 +22,7 @@ spec:
       containers:
         - name: changedetectionio
           image: "{{ .Values.services.changedetectionio.image.repository }}:{{ .Values.services.changedetectionio.image.tag }}"
-          imagePullPolicy: {{ .Values.services.changedetectionio.image.pullPolicy }}
+          imagePullPolicy: "{{ .Values.services.changedetectionio.image.pullPolicy }}"
           env:
             - name: PUID
               value: "1000"
@@ -30,6 +30,8 @@ spec:
               value: "1000"
             - name: TZ
               value: "{{ .Values.common.tz }}"
+            - name: WEBDRIVER_URL
+              value: "http://selenium:4444/wd/hub"
           ports:
             - name: http
               containerPort: 5000

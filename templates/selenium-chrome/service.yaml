@@ -1,0 +1,24 @@
+{{- if .Values.services.selenium.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: selenium
+  namespace: default
+  labels:
+    app.kubernetes.io/name: selenium
+spec:
+  type: NodePort
+  ports:
+    - name: selenium
+      port: 4444
+      nodePort: 30001
+      targetPort: 4444
+      protocol: TCP
+    - name: devtools
+      port: 7900
+      nodePort: 30002
+      targetPort: 7900
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: selenium
+{{- end }}
