@@ -172,7 +172,7 @@ services:
     enabled: false
     replicaCount: 1
     image:
-      repository: lscr.io/linuxserver/changedetection.io
+      repository: ghcr.io/dgtlmoon/changedetection.io
       tag: latest
       pullPolicy: Always
     config: /path/to/config
@@ -181,6 +181,14 @@ services:
     replicaCount: 1
     image:
       repository: lscr.io/linuxserver/apprise-api
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+  playwright:
+    enabled: false
+    replicaCount: 1
+    image:
+      repository: browserless/chrome
       tag: latest
       pullPolicy: Always
     config: /path/to/config

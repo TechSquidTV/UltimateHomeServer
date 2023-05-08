@@ -24,8 +24,9 @@
 - 📊 [`tautulli`](https://tautulli.com/): Monitor your Plex Media Server.
 - ☁️ [`cloudflared`](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/): Expose services running on your home network to the internet.
 - 📲 [`gotify`](https://gotify.net/docs/plugin): Self-hosted push notifications.
-- 📲 [`apprise-api](https://github.com/caronc/apprise-api): Multi-platform push notifications.
-- 🔄 [`changedetection.io`](https://changedetection.io): Monitor web pages for changes. 
+- 📲 [`apprise-api`](https://github.com/caronc/apprise-api): Multi-platform push notifications.
+- 🔄 [`changedetection.io`](https://changedetection.io): Monitor web pages for changes.
+- 🎭 [`playwright`](https://playwright.dev/): A headless browser automator.
 
 ## Prerequisites
 

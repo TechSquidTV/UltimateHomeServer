@@ -1,0 +1,50 @@
+{{- if .Values.services.playwright.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playwright
+  namespace: default
+  labels:
+    app.kubernetes.io/name: playwright
+spec:
+  revisionHistoryLimit: 3
+  replicas: {{ .Values.services.playwright.replicaCount }}
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: playwright
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: playwright
+    spec:
+      containers:
+        - name: playwright
+          image: "{{ .Values.services.playwright.image.repository }}:{{ .Values.services.playwright.image.tag }}"
+          imagePullPolicy: {{ .Values.services.playwright.image.pullPolicy }}
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "{{ .Values.common.tz }}"
+            - name: hostname
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          volumeMounts:
+            - name: playwright-config
+              mountPath: /config
+
+      volumes:
+        - name: playwright-config
+          hostPath:
+            path: "{{ .Values.services.playwright.config }}"
+            type: Directory
+{{- end }}

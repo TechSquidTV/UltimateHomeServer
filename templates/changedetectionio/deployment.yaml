@@ -30,6 +30,8 @@ spec:
               value: "1000"
             - name: TZ
               value: "{{ .Values.common.tz }}"
+            - name: PLAYWRIGHT_DRIVER_URL
+              value: "ws://playwright:3000?stealth=1&--disable-web-security=true"
           ports:
             - name: http
               containerPort: 5000
