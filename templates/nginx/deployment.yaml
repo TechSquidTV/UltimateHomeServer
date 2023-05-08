@@ -55,6 +55,10 @@ spec:
               readOnly: true
               mountPath: /etc/nginx/ssl.conf
               subPath: ssl.conf
+            - name: nginx-configs
+              readOnly: true
+              mountPath: /etc/nginx/nginx_proxy_headers.conf
+              subPath: nginx_proxy_headers.conf
             - name: letsencrypt
               readOnly: true
               mountPath: /etc/letsencrypt
