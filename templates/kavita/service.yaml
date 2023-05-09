@@ -1,0 +1,18 @@
+{{- if .Values.services.kavita.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: kavita
+  namespace: default
+  labels:
+    app.kubernetes.io/name: kavita
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: kavita
+{{- end }}

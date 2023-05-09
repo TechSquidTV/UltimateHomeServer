@@ -194,3 +194,12 @@ services:
       tag: latest
       pullPolicy: Always
     config: /path/to/config
+  kavita:
+    enabled: false
+    replicaCount: 1
+    image:
+      repository: kizaing/kavita
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
+    library: /path/to/library

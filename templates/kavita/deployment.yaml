@@ -1,0 +1,52 @@
+{{- if .Values.services.kavita.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kavita
+  namespace: default
+  labels:
+    app.kubernetes.io/name: kavita
+spec:
+  revisionHistoryLimit: 3
+  replicas: {{ .Values.services.kavita.replicaCount }}
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kavita
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kavita
+    spec:
+      containers:
+        - name: kavita
+          image: "{{ .Values.services.kavita.image.repository }}:{{ .Values.services.kavita.image.tag }}"
+          imagePullPolicy: {{ .Values.services.kavita.image.pullPolicy }}
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "{{ .Values.common.tz }}"
+          ports:
+            - name: http
+              containerPort: 5000
+              protocol: TCP
+          volumeMounts:
+            - name: kavita-config
+              mountPath: /kavita/config
+            - name: library
+              mountPath: /library
+
+      volumes:
+        - name: kavita-config
+          hostPath:
+            path: "{{ .Values.services.kavita.config }}"
+            type: Directory
+        - name: library
+          hostPath:
+            path: "{{ .Values.services.kavita.library }}"
+            type: Directory
+{{- end }}
