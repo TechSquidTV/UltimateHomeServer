@@ -45,6 +45,8 @@ spec:
               mountPath: /music
             - name: photos
               mountPath: /photos
+            - name: commercials
+              mountPath: /commercials
       volumes:
         - name: plex-config
           hostPath:
@@ -65,5 +67,9 @@ spec:
         - name: photos
           hostPath:
             path: "{{ .Values.services.plex.library.photos }}"
+            type: Directory
+        - name: commercials
+          hostPath:
+            path: "{{ .Values.services.plex.library.commercials }}"
             type: Directory
 {{- end }}
