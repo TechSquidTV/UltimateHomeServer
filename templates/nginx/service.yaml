@@ -10,16 +10,16 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 80
-      targetPort: 80
+      port: {{ .Values.services.nginx.ports.http }}
+      targetPort: {{ .Values.services.nginx.ports.http }}
     - name: https
       protocol: TCP
-      port: 443
-      targetPort: 443
+      port: {{ .Values.services.nginx.ports.https }}
+      targetPort: {{ .Values.services.nginx.ports.https }}
     - name: plex
       protocol: TCP
-      port: 32400
-      targetPort: 32400
+      port: {{ .Values.services.plex.ports.http }}
+      targetPort: {{ .Values.services.plex.ports.http }}
   selector:
     app: nginx
 {{- end }}

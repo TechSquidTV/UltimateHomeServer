@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 5000
+              containerPort: {{ .Values.services.kavita.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: kavita-config

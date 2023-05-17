@@ -31,10 +31,10 @@ spec:
             - name: TZ
               value: "{{ .Values.common.tz }}"
             - name: PLAYWRIGHT_DRIVER_URL
-              value: "ws://playwright:3000?stealth=1&--disable-web-security=true"
+              value: "ws://playwright:{{ .Values.services.playwright.ports.http }}?stealth=1&--disable-web-security=true"
           ports:
             - name: http
-              containerPort: 5000
+              containerPort: {{ .Values.services.changedetectionio.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: changedetectionio-config

@@ -33,7 +33,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 7474
+              containerPort: {{ .Values.services.autobrr.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: autobrr-config

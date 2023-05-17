@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 32400
+              containerPort: {{ .Values.services.plex.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: plex-config

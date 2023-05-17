@@ -9,7 +9,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 8989
+    - port: {{ .Values.services.sonarr.ports.http }}
       targetPort: http
       protocol: TCP
       name: http

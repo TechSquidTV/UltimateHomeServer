@@ -10,7 +10,7 @@ spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 5055
+      port: {{ .Values.services.overseerr.ports.http }}
       targetPort: http
       protocol: TCP
   selector:

@@ -36,7 +36,7 @@ spec:
                   fieldPath: spec.nodeName
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: {{ .Values.services.playwright.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: playwright-config

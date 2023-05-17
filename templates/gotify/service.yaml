@@ -10,7 +10,7 @@ spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 80
+      port: {{ .Values.services.gotify.ports.http }}
       targetPort: http
       protocol: TCP
   selector:

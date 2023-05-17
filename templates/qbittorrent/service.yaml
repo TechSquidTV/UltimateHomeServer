@@ -10,15 +10,15 @@ spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 8080
+      port: {{ .Values.services.qbittorrent.ports.http }}
       targetPort: http
       protocol: TCP
     - name: p2p
-      port: 6881
+      port: {{ .Values.services.qbittorrent.ports.p2p }}
       targetPort: p2p
       protocol: TCP
-    - name: p2p-udp
-      port: 6881
+    - name: p2pudp
+      port: {{ .Values.services.qbittorrent.ports.p2pudp }}
       targetPort: p2p
       protocol: UDP
   selector:

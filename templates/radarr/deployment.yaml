@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 7878
+              containerPort: {{ .Values.services.radarr.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: radarr-config

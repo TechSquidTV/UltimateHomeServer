@@ -9,10 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 8181
+    - name: http
+      port: {{ .Values.services.tautulli.ports.http }}
       targetPort: http
       protocol: TCP
-      name: http
   selector:
     app.kubernetes.io/name: tautulli
 {{- end }}

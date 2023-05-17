@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.services.huginn.app_secret_token }}"
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: {{ .Values.services.huginn.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: huginn-data
