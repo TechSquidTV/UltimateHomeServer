@@ -34,8 +34,6 @@ spec:
               value: "1000"
             - name: TZ
               value: "{{ .Values.common.tz }}"
-            - name: WEBUI_PORT
-              value: "8080"
           ports:
             - containerPort: 80
               protocol: TCP
