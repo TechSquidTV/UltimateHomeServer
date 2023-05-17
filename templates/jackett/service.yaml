@@ -9,10 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 9117
+    - name: http
+      port: 9117
       targetPort: http
       protocol: TCP
-      name: http
   selector:
     app.kubernetes.io/name: jackett
 {{- end }}

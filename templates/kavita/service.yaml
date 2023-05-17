@@ -9,10 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 5000
+    - name: http
+      port: 5000
       targetPort: http
       protocol: TCP
-      name: http
   selector:
     app.kubernetes.io/name: kavita
 {{- end }}
