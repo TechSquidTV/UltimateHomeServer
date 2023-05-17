@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 8989
+              containerPort: {{ .Values.services.sonarr.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: sonarr-config

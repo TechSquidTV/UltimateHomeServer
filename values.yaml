@@ -15,11 +15,17 @@ services:
       repository: lscr.io/linuxserver/qbittorrent
       tag: latest
       pullPolicy: Always
+    ports:
+      http: 8080
+      p2p: 6881
+      p2pudp: 6881
     config: /path/to/config
     downloads: /path/to/downloads
   plex:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 32400
     image:
       repository: lscr.io/linuxserver/plex
       tag: latest
@@ -33,6 +39,8 @@ services:
   homepage:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 3000
     image:
       repository: ghcr.io/benphelps/homepage
       tag: latest
@@ -71,6 +79,9 @@ services:
   nginx:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 80
+      https: 443
     image:
       repository: nginx
       tag: latest
@@ -80,6 +91,8 @@ services:
   sonarr:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 8989
     image:
       repository: lscr.io/linuxserver/sonarr
       tag: latest
@@ -88,6 +101,8 @@ services:
   radarr:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 7878
     image:
       repository: lscr.io/linuxserver/radarr
       tag: latest
@@ -96,6 +111,8 @@ services:
   jackett:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 9117
     image:
       repository: lscr.io/linuxserver/jackett
       tag: latest
@@ -104,6 +121,8 @@ services:
   thelounge:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 9000
     image:
       repository: lscr.io/linuxserver/thelounge
       tag: latest
@@ -112,6 +131,8 @@ services:
   autobrr:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 7474
     image:
       repository: ghcr.io/autobrr/autobrr
       tag: latest
@@ -120,6 +141,8 @@ services:
   sabnzbd:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 8080
     image:
       repository: lscr.io/linuxserver/sabnzbd
       tag: latest
@@ -128,6 +151,8 @@ services:
   overseerr:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 5055
     image:
       repository: lscr.io/linuxserver/overseerr
       tag: latest
@@ -136,6 +161,8 @@ services:
   tautulli:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 8181
     image:
       repository: lscr.io/linuxserver/tautulli
       tag: latest
@@ -155,6 +182,8 @@ services:
   huginn:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 3000
     image:
       repository: ghcr.io/huginn/huginn
       tag: latest
@@ -165,6 +194,8 @@ services:
   gotify:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 80
     image:
       repository: ghcr.io/gotify/server
       tag: latest
@@ -173,6 +204,8 @@ services:
   changedetectionio:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 5000
     image:
       repository: ghcr.io/dgtlmoon/changedetection.io
       tag: latest
@@ -181,6 +214,8 @@ services:
   apprise:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 8000
     image:
       repository: lscr.io/linuxserver/apprise-api
       tag: latest
@@ -189,6 +224,8 @@ services:
   playwright:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 3000
     image:
       repository: browserless/chrome
       tag: latest
@@ -197,6 +234,8 @@ services:
   kavita:
     enabled: false
     replicaCount: 1
+    ports:
+      http: 5000
     image:
       repository: kizaing/kavita
       tag: latest

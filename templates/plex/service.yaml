@@ -10,7 +10,7 @@ spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 32400
+      port: {{ .Values.services.plex.ports.http }}
       targetPort: http
       protocol: TCP
   selector:

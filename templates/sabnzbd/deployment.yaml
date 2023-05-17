@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: {{ .Values.services.sabnzbd.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: sabnzbd-config

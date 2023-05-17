@@ -10,7 +10,7 @@ spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 9117
+      port: {{ .Values.services.jackett.ports.http }}
       targetPort: http
       protocol: TCP
   selector:

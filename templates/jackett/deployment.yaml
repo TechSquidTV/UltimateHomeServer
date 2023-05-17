@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 9117
+              containerPort: {{ .Values.services.jackett.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: jackett-config

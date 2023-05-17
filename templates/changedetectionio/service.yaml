@@ -10,7 +10,7 @@ spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 5000
+      port: {{ .Values.services.changedetectionio.ports.http }}
       targetPort: http
       protocol: TCP
   selector:

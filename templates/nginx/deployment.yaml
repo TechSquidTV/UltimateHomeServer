@@ -35,15 +35,15 @@ spec:
             - name: TZ
               value: "{{ .Values.common.tz }}"
           ports:
-            - containerPort: 80
+            - name: http
+              containerPort: {{ .Values.services.nginx.ports.http }}
               protocol: TCP
-              name: http
-            - containerPort: 443
+            - name: https
+              containerPort: {{ .Values.services.nginx.ports.https }}
               protocol: TCP
-              name: https
-            - containerPort: 32400
+            - name: plex
+              containerPort: {{ .Values.services.plex.ports.http }}
               protocol: TCP
-              name: plex
           volumeMounts:
             - name: nginx-configs
               readOnly: true

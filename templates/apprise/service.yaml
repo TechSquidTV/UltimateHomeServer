@@ -10,7 +10,7 @@ spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 8000
+      port: {{ .Values.services.apprise.ports.http }}
       targetPort: http
       protocol: TCP
   selector:

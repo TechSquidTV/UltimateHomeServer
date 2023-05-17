@@ -31,16 +31,16 @@ spec:
             - name: TZ
               value: "{{ .Values.common.tz }}"
             - name: WEBUI_PORT
-              value: "8080"
+              value: "{{ .Values.services.qbittorrent.ports.http }}"
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: {{ .Values.services.qbittorrent.ports.http }}
               protocol: TCP
             - name: p2p
-              containerPort: 6881
+              containerPort: {{ .Values.services.qbittorrent.ports.p2p }}
               protocol: TCP
-            - name: p2p-udp
-              containerPort: 6881
+            - name: p2pudp
+              containerPort: {{ .Values.services.qbittorrent.ports.p2pudp }}
               protocol: UDP
           volumeMounts:
             - name: qbittorrent-config

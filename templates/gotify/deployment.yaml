@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.services.gotify.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: gotify-data

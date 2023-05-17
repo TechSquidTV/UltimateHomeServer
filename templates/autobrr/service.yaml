@@ -10,7 +10,7 @@ spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 7474
+      port: {{ .Values.services.autobrr.ports.http }}
       targetPort: http
       protocol: TCP
   selector:

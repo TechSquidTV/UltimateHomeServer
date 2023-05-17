@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 5055
+              containerPort: {{ .Values.services.overseerr.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: overseerr-config

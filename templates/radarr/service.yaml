@@ -9,7 +9,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 7878
+    - port: {{ .Values.services.radarr.ports.http }}
       targetPort: http
       protocol: TCP
       name: http

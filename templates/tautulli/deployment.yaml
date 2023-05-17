@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 8181
+              containerPort: {{ .Values.services.tautulli.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: tautulli-config

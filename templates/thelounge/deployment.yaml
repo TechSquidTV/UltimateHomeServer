@@ -32,7 +32,7 @@ spec:
               value: "{{ .Values.common.tz }}"
           ports:
             - name: http
-              containerPort: 9000
+              containerPort: {{ .Values.services.thelounge.ports.http }}
               protocol: TCP
           volumeMounts:
             - name: thelounge-config
