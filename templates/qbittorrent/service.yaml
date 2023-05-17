@@ -9,18 +9,18 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 8080
+    - name: http
+      port: 8080
       targetPort: http
       protocol: TCP
-      name: http
-    - port: 6881
+    - name: p2p
+      port: 6881
       targetPort: p2p
       protocol: TCP
-      name: p2p
-    - port: 6881
+    - name: p2p-udp
+      port: 6881
       targetPort: p2p
       protocol: UDP
-      name: p2p-udp
   selector:
     app.kubernetes.io/name: qbittorrent
 {{- end }}

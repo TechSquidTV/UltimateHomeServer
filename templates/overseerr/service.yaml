@@ -9,10 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 5055
+    - name: http
+      port: 5055
       targetPort: http
       protocol: TCP
-      name: http
   selector:
     app.kubernetes.io/name: overseerr
 {{- end }}

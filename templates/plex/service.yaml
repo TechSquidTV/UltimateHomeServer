@@ -9,10 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 32400
+    - name: http
+      port: 32400
       targetPort: http
       protocol: TCP
-      name: http
   selector:
     app.kubernetes.io/name: plex
 {{- end }}
