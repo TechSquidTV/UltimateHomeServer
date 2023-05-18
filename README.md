@@ -4,8 +4,19 @@
 </p>
 
 <p align="center">
-  A personal collection of helm charts for the ultimate home server.
+  <a href="https://ultimatehomeserver.com/"> UltimateHomeServer.com (coming soon) </a>
 </p>
+
+<p align="center">
+  Deploy the ultimate home server stack with <a href="https://k3s.io/"> K3s </a> and <a href="https://helm.sh/">Helm</a>.
+</p>
+
+
+## Getting Started
+
+View the [docs](docs/README.md) for a detailed guide on how to get started.
+
+---
 
 ## Services
 ### Dashboard
@@ -19,8 +30,8 @@
 - 🎬 [`radarr`](https://radarr.video/): An automated movie download and management system.
 - 📊 [`tautulli`](https://tautulli.com/): Monitor your Plex Media Server.
 - 🐯 [`prowlarr`](https://github.com/Prowlarr/Prowlarr): Manage indexers for your *arr stack.
-- 🔍 [`jackett`](https://github.com/Jackett/Jackett): An API to connect with various torrent providers.
-- 🤖 [`autobrr`](https://autobrr.com/): Automatically search and download from IRC.
+- 🥼 [`jackett`](https://github.com/Jackett/Jackett): An API to connect with various torrent providers.
+- 🐇 [`autobrr`](https://autobrr.com/): Automatically search and download from IRC.
 ### Download
 - ⏬ [`qbittorrent`](https://www.qbittorrent.org/): A lightweight and feature-rich torrent client.
 - 📰 [`sabnzbd`](https://sabnzbd.org/): The automated Usenet download tool.
@@ -38,23 +49,9 @@
 ### Development
 - 🎭 [`playwright`](https://playwright.dev/): A headless browser automator.
 
-## Prerequisites
+---
 
-- Kubernetes 1.16+ (built for k3s)
-- Helm 3.0+
-
-## Installing the Repository
-
-To add this repository to your Helm client, run the following command:
-
-```bash
-helm repo add home-server https://github.com/KyleTryon/homeserver-helm-charts
-```
-
-## Installing Charts
-
-To install a chart from this repository, use the following command:
-
-```bash
-helm install [RELEASE_NAME] home-server/[CHART_NAME]
-```
+## Thanks
+<p align="center">
+  Made with ❤️, built on the backs of <a href="https://wiki.servarr.com/">*arr stack</a>, <a href="https://www.linuxserver.io/"> linuxserver.io</a>, and more awesome open-source projects.
+</p>

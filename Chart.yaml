@@ -1,28 +1,29 @@
 apiVersion: v2
-name: rackserver
+name: Ultimate Home Server
 version: 1.0.0
-description: Home rack server
+description: The ultimate home server
 type: application
 keywords:
+  - apprise
   - autobrr
+  - changedetection.io
   - cloudflared
+  - ebook
   - gotify
   - homepage
+  - homeserver
   - huginn
   - jackett
+  - kavita
   - nginx
   - overseerr
+  - playwright
   - plex
+  - prowlarr
   - qbittorrent
-  - rackserver
   - radarr
   - sabnzbd
   - sonarr
   - tautulli
   - thelounge
-  - changedetection.io
-  - apprise
-  - playwright
-  - kavita
-  - ebook
-  - prowlarr
+  - ultimatehomeserver
