@@ -18,6 +18,7 @@
 - ⏺️ [`sonarr`](https://sonarr.tv/): An automated TV show download and management system.
 - 🎬 [`radarr`](https://radarr.video/): An automated movie download and management system.
 - 📊 [`tautulli`](https://tautulli.com/): Monitor your Plex Media Server.
+- 🐯 [`prowlarr`](https://github.com/Prowlarr/Prowlarr): Manage indexers for your *arr stack.
 - 🔍 [`jackett`](https://github.com/Jackett/Jackett): An API to connect with various torrent providers.
 - 🤖 [`autobrr`](https://autobrr.com/): Automatically search and download from IRC.
 ### Download

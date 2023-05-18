@@ -242,3 +242,13 @@ services:
       pullPolicy: Always
     config: /path/to/config
     library: /path/to/library
+  prowlarr:
+    enabled: false
+    replicaCount: 1
+    ports:
+      http: 9696
+    image:
+      repository: lscr.io/linuxserver/prowlarr
+      tag: latest
+      pullPolicy: Always
+    config: /path/to/config
