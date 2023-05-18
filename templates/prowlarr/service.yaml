@@ -1,0 +1,18 @@
+{{- if .Values.services.prowlarr.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: prowlarr
+  namespace: default
+  labels:
+    app.kubernetes.io/name: prowlarr
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: {{ .Values.services.prowlarr.ports.http }}
+      targetPort: http
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: prowlarr
+{{- end }}
