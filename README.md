@@ -4,6 +4,18 @@
 </p>
 
 <p align="center">
+  <!-- Add shields from https://shields.io/ -->
+  <a href="https://github.com/sponsors/KyleTryon">
+    <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/KyleTryon">
+  </a>
+  <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/TechSquidTV/UltimateHomeServer/commitlint.yml">
+  <a href="https://discord.gg/CTC9DVvYZz">
+    <img alt="Discord" src="https://img.shields.io/discord/415249366840901643?style=plastic&logo=discord">
+  </a>
+</p>
+
+
+<p align="center">
   <a href="https://ultimatehomeserver.com/"> UltimateHomeServer.com (coming soon) </a>
 </p>
 
