@@ -45,17 +45,17 @@ services:
       repository: ghcr.io/benphelps/homepage
       tag: latest
       pullPolicy: Always
-    services: |
+    services:
       - My First Group:
           - My First Service:
               href: http://localhost/
               description: Homepage is awesome
-    bookmarks: |
+    bookmarks:
         - Developer:
           - Github:
               - abbr: GH
                 href: https://github.com/
-    widgets: |
+    widgets:
       - kubernetes:
           cluster:
             show: true
