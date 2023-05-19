@@ -59,7 +59,7 @@ chmod 700 get_helm.sh
 ### Clone this repository
 
 ```bash
-git clone https://github.com/KyleTryon/homeserver-helm-charts ~/opt/homeserver
+git clone https://github.com/TechSquidTV/UltimateHomeServer /opt/homeserver
 ```
 
 ## Configure a domain name
