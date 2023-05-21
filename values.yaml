@@ -108,16 +108,6 @@ services:
       tag: latest
       pullPolicy: Always
     config: /path/to/config
-  jackett:
-    enabled: false
-    replicaCount: 1
-    ports:
-      http: 9117
-    image:
-      repository: lscr.io/linuxserver/jackett
-      tag: latest
-      pullPolicy: Always
-    config: /path/to/config
   thelounge:
     enabled: false
     replicaCount: 1

@@ -42,7 +42,6 @@ View the [docs](docs/README.md) for a detailed guide on how to get started.
 - 🎬 [`radarr`](https://radarr.video/): An automated movie download and management system.
 - 📊 [`tautulli`](https://tautulli.com/): Monitor your Plex Media Server.
 - 🐯 [`prowlarr`](https://github.com/Prowlarr/Prowlarr): Manage indexers for your *arr stack.
-- 🥼 [`jackett`](https://github.com/Jackett/Jackett): An API to connect with various torrent providers.
 - 🐇 [`autobrr`](https://autobrr.com/): Automatically search and download from IRC.
 ### Download
 - ⏬ [`qbittorrent`](https://www.qbittorrent.org/): A lightweight and feature-rich torrent client.
