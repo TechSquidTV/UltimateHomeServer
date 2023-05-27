@@ -1,0 +1,245 @@
+# This sample values.yaml file was automatically generated with the uhs cli.
+# Use the uhs cli to generate your own values.yaml file.
+
+common:
+    tz: America/New_York
+    network:
+        gateway: 192.168.1.1
+    certs:
+        ssl_certificate_key: /etc/letsencrypt/live/${DOMAIN}/privkey.pem
+        ssl_certificate: /etc/letsencrypt/live/${DOMAIN}/fullchain.pem
+        ssl_dhparam: /etc/letsencrypt/certs/dhparam.pem
+services:
+    apprise:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: lscr.io/linuxserver/apprise-api
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 8000
+        config: /opt/apprise/config
+    autobrr:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: ghcr.io/autobrr/autobrr
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 7474
+        config: /opt/autobrr/config
+    changedetectionio:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: ghcr.io/dgtlmoon/changedetection.io
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 5000
+        config: /opt/changedetectionio/config
+    cloudflared:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: cloudflared/cloudflared
+            tag: latest
+            pullPolicy: IfNotPresent
+        tunnel: example-tunnel
+        domain: example.com
+        url: http://foo.example.com
+        target: localhost:8080
+    gotify:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: ghcr.io/gotify/server
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 80
+        data: /opt/gotify/data
+    homepage:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: ghcr.io/benphelps/homepage
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 3000
+        bookmarks:
+            - Development:
+                - github:
+                    - icon: mdi-github
+                      abbr: gh
+                      href: https://github.com
+            - Media:
+                - youtube:
+                    - icon: mdi-youtube
+                      abbr: yt
+                      href: https://youtube.com
+                - plex:
+                    - icon: mdi-plex
+                      abbr: plex
+                      href: https://app.plex.tv/desktop
+        services:
+            - Media:
+                - plex:
+                    - icon: mdi-plex
+                      href: https://app.plex.tv/desktop
+                      description: Plex
+        widgets:
+            - search:
+                focus: true
+                provider: '[duckduckgo, google]'
+                target: _blank
+        settings:
+            theme: dark
+            title: Homepage
+    huginn:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: ghcr.io/huginn/huginn
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 3000
+        data: /opt/huginn/data
+        invitation_code: invite-me
+        app_secret_token: <super secret token>
+    kavita:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: kizaing/kavita
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 5000
+        config: /opt/kavita/config
+        library: /opt/kavita/library
+    nginx:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: nginx
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 80
+            https: 443
+        public_path: /opt/nginx/public
+        domain: example.com
+    overseerr:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: lscr.io/linuxserver/overseerr
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 5055
+        config: /opt/overseerr/config
+    playwright:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: browserless/chrome
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 3000
+        config: /opt/playwright/config
+    plex:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: lscr.io/linuxserver/plex
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 32400
+        config: /opt/plex/config
+        library: /opt/plex/library
+    prowlarr:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: lscr.io/linuxserver/prowlarr
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 9696
+        config: /opt/prowlarr/config
+    qbittorrent:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: lscr.io/linuxserver/qbittorrent
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 8080
+            p2p: 6881
+            p2pudp: 6881
+        config: /opt/qbittorrent/config
+        downloads: ~/downloads
+    radarr:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: lscr.io/linuxserver/radarr
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 8989
+        config: /opt/radarr/config
+        downloads: ~/downloads
+        tv: /opt/radarr/tv
+    sabnzbd:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: lscr.io/linuxserver/sabnzbd
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 8080
+        config: /opt/sabnzbd/config
+        downloads: ~/downloads
+    sonarr:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: lscr.io/linuxserver/sonarr
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 8989
+        config: /opt/sonarr/config
+        downloads: ~/downloads
+        tv: /opt/sonarr/tv
+    tautulli:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: lscr.io/linuxserver/tautulli
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 8181
+        config: /opt/tautulli/config
+    thelounge:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: lscr.io/linuxserver/thelounge
+            tag: latest
+            pullPolicy: Always
+        ports:
+            http: 9000
+        config: /opt/thelounge/config
