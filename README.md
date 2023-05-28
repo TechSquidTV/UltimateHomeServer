@@ -16,7 +16,7 @@
 
 
 <p align="center">
-  <a href="https://ultimatehomeserver.com/"> UltimateHomeServer.com (coming soon) </a>
+  <a href="https://ultimatehomeserver.com/"> UltimateHomeServer.com</a>
 </p>
 
 <p align="center">
@@ -26,7 +26,7 @@
 
 ## Getting Started
 
-View the [docs](docs/README.md) for a detailed guide on how to get started.
+View the [docs](https://www.ultimatehomeserver.com/docs/) for a detailed guide on how to get started.
 
 ---
 
@@ -59,6 +59,12 @@ View the [docs](docs/README.md) for a detailed guide on how to get started.
 - 🔄 [`changedetection.io`](https://changedetection.io): Monitor web pages for changes.
 ### Development
 - 🎭 [`playwright`](https://playwright.dev/): A headless browser automator.
+
+---
+
+## CLI
+
+View the [`uhs-cli` repository](https://github.com/TechSquidTV/uhs-cli) for more information.
 
 ---
 
