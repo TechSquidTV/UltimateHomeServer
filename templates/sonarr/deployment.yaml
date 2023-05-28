@@ -49,10 +49,10 @@ spec:
             type: Directory
         - name: downloads
           hostPath:
-            path: "{{ .Values.services.qbittorrent.downloads }}"
+            path: "{{ .Values.services.soanrr.downloads }}"
             type: Directory
         - name: tv
           hostPath:
-            path: "{{ .Values.services.plex.library.tv }}"
+            path: "{{ .Values.services.sonarr.tv }}"
             type: Directory
 {{- end }}
