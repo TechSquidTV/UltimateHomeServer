@@ -10,11 +10,11 @@ data:
   kubernetes.yaml: |
     mode: cluster
   settings.yaml: |
-    {{ .Values.services.homepage.settings | nindent 4 }}
+    {{ .Values.services.homepage.settings | toYaml | nindent 4 }}
   bookmarks.yaml: |
     {{ .Values.services.homepage.bookmarks | toYaml | nindent 4 }}
   services.yaml: |
     {{ .Values.services.homepage.services | toYaml | nindent 4 }}
   widgets.yaml: |
-    {{ .Values.services.homepage.widgets | toYaml | nindent 4}}
+    {{ .Values.services.homepage.widgets | toYaml | nindent 4 }}
 {{- end }}
