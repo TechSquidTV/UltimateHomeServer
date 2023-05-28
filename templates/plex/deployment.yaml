@@ -37,39 +37,15 @@ spec:
           volumeMounts:
             - name: plex-config
               mountPath: /config
-            - name: tv
-              mountPath: /tv
-            - name: movies
-              mountPath: /movies
-            - name: music
-              mountPath: /music
-            - name: photos
-              mountPath: /photos
-            - name: commercials
-              mountPath: /commercials
+            - name: library
+              mountPath: /library
       volumes:
         - name: plex-config
           hostPath:
             path: "{{ .Values.services.plex.config }}"
             type: Directory
-        - name: tv
+        - name: library
           hostPath:
-            path: "{{ .Values.services.plex.library.tv }}"
-            type: Directory
-        - name: movies
-          hostPath:
-            path: "{{ .Values.services.plex.library.movies }}"
-            type: Directory
-        - name: music
-          hostPath:
-            path: "{{ .Values.services.plex.library.music }}"
-            type: Directory
-        - name: photos
-          hostPath:
-            path: "{{ .Values.services.plex.library.photos }}"
-            type: Directory
-        - name: commercials
-          hostPath:
-            path: "{{ .Values.services.plex.library.commercials }}"
+            path: "{{ .Values.services.plex.library }}"
             type: Directory
 {{- end }}
