@@ -49,7 +49,7 @@ spec:
             type: Directory
         - name: downloads
           hostPath:
-            path: "{{ .Values.services.soanrr.downloads }}"
+            path: "{{ .Values.services.sonarr.downloads }}"
             type: Directory
         - name: tv
           hostPath:
