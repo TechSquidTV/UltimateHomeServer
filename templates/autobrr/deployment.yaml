@@ -11,7 +11,7 @@ spec:
   revisionHistoryLimit: 3
   replicas: {{ .Values.services.autobrr.replicaCount }}
   strategy:
-    type: RollingUpdate
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/name: autobrr
