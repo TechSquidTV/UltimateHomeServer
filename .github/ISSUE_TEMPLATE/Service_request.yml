@@ -6,12 +6,12 @@ body:
   - type: dropdown
     id: functionality
     attributes:
-      label: 'Does this service add new functionality?'
-      description: 'New or alternative?'
+      label: Does this service add new functionality?
+      multiple: false
       options:
-        - label: 'New functionality'
-        - label: 'Alternative to existing service'
-        - label: 'Replace existing service'
+        - 'New functionality'
+        - 'Alternative to existing service'
+        - 'Replace existing service'
 
   - type: input
     id: service
