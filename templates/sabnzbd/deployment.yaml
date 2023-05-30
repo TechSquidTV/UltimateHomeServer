@@ -10,7 +10,7 @@ spec:
   revisionHistoryLimit: 3
   replicas: {{ .Values.services.sabnzbd.replicaCount }}
   strategy:
-    type: RollingUpdate
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/name: sabnzbd

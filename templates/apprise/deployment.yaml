@@ -10,7 +10,7 @@ spec:
   revisionHistoryLimit: 3
   replicas: {{ .Values.services.apprise.replicaCount }}
   strategy:
-    type: RollingUpdate
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/name: apprise
