@@ -3,15 +3,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudflared
+  namespace: default
+  labels:
+    app.kubernetes.io/name: cloudflared
 spec:
   selector:
     matchLabels:
-      app: cloudflared
-  replicas: {{ .Values.services.cloudflared.replicaCount }} # You could also consider elastic scaling for this deployment
+      app.kubernetes.io/name: cloudflared
+  revisionHistoryLimit: 3
+  replicas: {{ .Values.services.cloudflared.replicaCount }}
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
-        app: cloudflared
+        app.kubernetes.io/name: cloudflared
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/cloudflared/configmap.yaml") . | sha256sum}}
         checksum/file: {{ (.Files.Get "files/cloudflared.conf") | sha256sum }}
