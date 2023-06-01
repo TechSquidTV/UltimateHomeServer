@@ -35,6 +35,7 @@ View the [docs](https://www.ultimatehomeserver.com/docs/) for a detailed guide o
 - 🏠 [`homepage`](https://gethomepage.dev/): A customizable start page for your home server.
 ### Media
 - 📺 [`plex`](https://www.plex.tv/): A personal media server.
+- 🪼 [`jellyfin`](https://jellyfin.org/): The free software media system.
 - 📖 [`kavita`](https://www.kavitareader.com/): A modern reading server for manga, comics, and books.
 ### Media Management
 - 👁️ [`overseerr`](https://overseerr.dev/): A request management and media discovery tool.
