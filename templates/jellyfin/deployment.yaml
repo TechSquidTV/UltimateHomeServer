@@ -1,0 +1,56 @@
+{{- if .Values.services.jellyfin.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+  namespace: default
+  labels:
+    app.kubernetes.io/name: jellyfin
+spec:
+  revisionHistoryLimit: 3
+  replicas: {{ .Values.services.jellyfin.replicaCount }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: jellyfin
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: jellyfin
+    spec:
+      containers:
+        - name: jellyfin
+          image: "{{ .Values.services.jellyfin.image.repository }}:{{ .Values.services.jellyfin.image.tag }}"
+          imagePullPolicy: {{ .Values.services.jellyfin.image.pullPolicy }}
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "{{ .Values.common.tz }}"
+            - name: "JELLYFIN_PublishedServerUrl"
+              value: "jellyfin.{{ .Values.services.nginx.domain }}"
+          ports:
+            - name: http
+              containerPort: {{ .Values.services.jellyfin.ports.http }}
+              protocol: TCP
+            - name: udp
+              containerPort: {{ .Values.services.jellyfin.ports.udp }}
+              protocol: UDP
+          volumeMounts:
+            - name: jellyfin-config
+              mountPath: /config
+            - name: library
+              mountPath: /library
+      volumes:
+        - name: jellyfin-config
+          hostPath:
+            path: "{{ .Values.services.jellyfin.config }}"
+            type: Directory
+        - name: library
+          hostPath:
+            path: "{{ .Values.services.jellyfin.library }}"
+            type: Directory
+{{- end }}
