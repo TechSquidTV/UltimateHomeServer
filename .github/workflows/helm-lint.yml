@@ -1,0 +1,28 @@
+name: Lint Helm Charts
+on: [pull_request]
+
+jobs:
+  helm-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: azure/setup-helm@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '1.17'
+          cache: false
+      - name: Clone UHS CLI
+        run: |
+          git clone https://github.com/TechSquidTV/uhs-cli.git /tmp/uhs-cli
+      - name: Install UHS CLI
+        run: |
+          cd /tmp/uhs-cli
+          go install
+      - name: Generate default values.yaml
+        run: |
+          uhs-cli default -o values.yaml
+      - name: Verify Helm Templates
+        run: |
+          helm template --values values.yaml .
