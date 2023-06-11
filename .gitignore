@@ -2,8 +2,8 @@
 # Chart dependencies
 **/charts/*.tgz
 # Personal files
-values.yaml
-secrets.yaml
+values.y*
+secrets.y*
 .env
 
 ### Misc ###
