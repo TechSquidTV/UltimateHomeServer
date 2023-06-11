@@ -37,8 +37,6 @@ spec:
           volumeMounts:
             - name: prowlarr-config
               mountPath: /config
-            - name: downloads
-              mountPath: /downloads
 
       volumes:
         - name: prowlarr-config
