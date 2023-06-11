@@ -45,8 +45,4 @@ spec:
           hostPath:
             path: "{{ .Values.services.prowlarr.config }}"
             type: Directory
-        - name: downloads
-          hostPath:
-            path: "{{ .Values.services.qbittorrent.downloads }}"
-            type: Directory
 {{- end }}
