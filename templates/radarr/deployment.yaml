@@ -37,22 +37,16 @@ spec:
           volumeMounts:
             - name: radarr-config
               mountPath: /config
-            - name: downloads
-              mountPath: /downloads
-            - name: movies
-              mountPath: /movies
+            - name: data
+              mountPath: /data
 
       volumes:
         - name: radarr-config
           hostPath:
             path: "{{ .Values.services.radarr.config }}"
             type: Directory
-        - name: downloads
+        - name: data
           hostPath:
-            path: "{{ .Values.services.radarr.downloads }}"
-            type: Directory
-        - name: movies
-          hostPath:
-            path: "{{ .Values.services.radarr.movies }}"
+            path: "{{ .Values.services.radarr.data }}"
             type: Directory
 {{- end }}

@@ -37,15 +37,15 @@ spec:
           volumeMounts:
             - name: sabnzbd-config
               mountPath: /config
-            - name: downloads
-              mountPath: /downloads
+            - name: data
+              mountPath: /data
       volumes:
         - name: sabnzbd-config
           hostPath:
             path: "{{ .Values.services.sabnzbd.config }}"
             type: Directory
-        - name: downloads
+        - name: data
           hostPath:
-            path: "{{ .Values.services.qbittorrent.downloads }}"
+            path: "{{ .Values.services.qbittorrent.data }}"
             type: Directory
 {{- end }}
