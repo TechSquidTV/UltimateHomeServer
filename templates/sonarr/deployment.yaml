@@ -37,22 +37,16 @@ spec:
           volumeMounts:
             - name: sonarr-config
               mountPath: /config
-            - name: downloads
-              mountPath: /downloads
-            - name: tv
-              mountPath: /tv
+            - name: data
+              mountPath: /data
 
       volumes:
         - name: sonarr-config
           hostPath:
             path: "{{ .Values.services.sonarr.config }}"
             type: Directory
-        - name: downloads
+        - name: data
           hostPath:
-            path: "{{ .Values.services.sonarr.downloads }}"
-            type: Directory
-        - name: tv
-          hostPath:
-            path: "{{ .Values.services.sonarr.tv }}"
+            path: "{{ .Values.services.radarr.data }}"
             type: Directory
 {{- end }}
