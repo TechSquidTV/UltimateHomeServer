@@ -1,6 +1,3 @@
-# This sample values.yaml file was automatically generated with the uhs cli.
-# Use the uhs cli to generate your own values.yaml file.
-
 common:
     tz: America/New_York
     network:
@@ -44,7 +41,7 @@ services:
         enabled: false
         replicaCount: 1
         image:
-            repository: cloudflared/cloudflared
+            repository: cloudflare/cloudflared
             tag: latest
             pullPolicy: IfNotPresent
         tunnel: example-tunnel
@@ -111,6 +108,18 @@ services:
         data: /opt/huginn/data
         invitation_code: invite-me
         app_secret_token: <super secret token>
+    jellyfin:
+        enabled: false
+        replicaCount: 1
+        image:
+            repository: ghcr.io/onedr0p/jellyfin
+            tag: rolling
+            pullPolicy: Always
+        ports:
+            http: 8096
+            udp: 7359
+        config: /opt/jellyfin/config
+        library: /data/library
     kavita:
         enabled: false
         replicaCount: 1
@@ -121,7 +130,7 @@ services:
         ports:
             http: 5000
         config: /opt/kavita/config
-        library: /opt/kavita/library
+        library: /data/library/books
     nginx:
         enabled: false
         replicaCount: 1
@@ -164,7 +173,7 @@ services:
         ports:
             http: 32400
         config: /opt/plex/config
-        library: /opt/plex/library
+        library: /data/library
     prowlarr:
         enabled: false
         replicaCount: 1
@@ -187,7 +196,7 @@ services:
             p2p: 6881
             p2pudp: 6881
         config: /opt/qbittorrent/config
-        downloads: ~/downloads
+        data: /data/torrents
     radarr:
         enabled: false
         replicaCount: 1
@@ -196,10 +205,9 @@ services:
             tag: latest
             pullPolicy: Always
         ports:
-            http: 8989
+            http: 7878
         config: /opt/radarr/config
-        downloads: ~/downloads
-        tv: /opt/radarr/tv
+        data: /data
     sabnzbd:
         enabled: false
         replicaCount: 1
@@ -210,7 +218,7 @@ services:
         ports:
             http: 8080
         config: /opt/sabnzbd/config
-        downloads: ~/downloads
+        data: /data/usenet
     sonarr:
         enabled: false
         replicaCount: 1
@@ -221,8 +229,7 @@ services:
         ports:
             http: 8989
         config: /opt/sonarr/config
-        downloads: ~/downloads
-        tv: /opt/sonarr/tv
+        data: /data
     tautulli:
         enabled: false
         replicaCount: 1
