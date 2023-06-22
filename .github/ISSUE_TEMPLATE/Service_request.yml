@@ -1,6 +1,7 @@
 # Original: https://github.com/nestjs/nest/blob/master/.github/ISSUE_TEMPLATE/Feature_request.yml
 name: "\U0001F680 Service Request"
 description: "I have a suggestion for a new service \U0001F63B!"
+title: "[Request]: "
 labels: ['enhancement', 'needs triage']
 body:
   - type: dropdown
