@@ -47,6 +47,6 @@ spec:
             type: Directory
         - name: data
           hostPath:
-            path: "{{ .Values.services.radarr.data }}"
+            path: "{{ .Values.services.sonarr.data }}"
             type: Directory
 {{- end }}
