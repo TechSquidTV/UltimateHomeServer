@@ -46,6 +46,6 @@ spec:
             type: Directory
         - name: data
           hostPath:
-            path: "{{ .Values.services.qbittorrent.data }}"
+            path: "{{ .Values.services.sabnzbd.data }}"
             type: Directory
 {{- end }}
